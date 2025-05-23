@@ -60,7 +60,7 @@ export const Dashboard = () => {
       {/* Main Content */}
       <Box sx={{ display: 'flex', gap: 2 }}>
       <Paper elevation={3} sx={{ 
-          width: '25%', 
+          width: '15%', 
           height: '85vh',
           overflow: 'auto' // Added for scrollable content
         }}>
@@ -98,7 +98,7 @@ export const Dashboard = () => {
         </Paper>
         {/* Map Container */}
         <Paper elevation={3} sx={{ 
-          width: '50%', 
+          width: '60%', 
           height: '85vh', 
           overflow: 'hidden'  
         }}>

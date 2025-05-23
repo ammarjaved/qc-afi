@@ -180,21 +180,31 @@ const MapComponent = ({selectedDate,selectedLayer}) => {
     <div className="relative w-full h-full">
       <MapContainer 
         center={defaultPosition}
-        zoom={13}
-        maxZoom={19}
+        zoom={10}
+        maxZoom={21}
         style={{ height: '85vh', width: '100%' }}
       >
       <LayersControl position="topright">
-      <BaseLayer checked name="OpenStreetMap">
+      <BaseLayer name="OpenStreetMap">
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        />
+        </BaseLayer>
+      <BaseLayer checked name="GoogleSatelliteMap">
+        <TileLayer
+          url="http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}"
+          maxZoom={20}
+          subdomains={['mt0','mt1','mt2','mt3']}
+          attribution="© Google"
         />
         </BaseLayer>
         <Overlay checked name="Regular Demand Point">
         <WMSTileLayer
           url="http://121.121.232.54:7090/geoserver/cite/wms"
           params={filterOption}
+          maxZoom={22}
+          minZoom={1}
           
         />
         </Overlay>
@@ -203,6 +213,8 @@ const MapComponent = ({selectedDate,selectedLayer}) => {
          <WMSTileLayer
           url="http://121.121.232.54:7090/geoserver/cite/wms"
           params={filterOption}
+          maxZoom={22}
+          minZoom={1}
           // params={{
           //   layers: 'cite:fpl1',
           //   format: 'image/png',
@@ -216,6 +228,8 @@ const MapComponent = ({selectedDate,selectedLayer}) => {
          <WMSTileLayer
           url="http://121.121.232.54:7090/geoserver/cite/wms"
           params={filterOption}
+          maxZoom={22}
+          minZoom={1}
           // params={{
           //   layers: 'cite:sfp_l2',
           //   format: 'image/png',
@@ -229,6 +243,8 @@ const MapComponent = ({selectedDate,selectedLayer}) => {
          <WMSTileLayer
           url="http://121.121.232.54:7090/geoserver/cite/wms"
           params={filterOption}
+          maxZoom={22}
+          minZoom={1}
           // params={{
           //   layers: 'cite:mfp_l3',
           //   format: 'image/png',
@@ -242,6 +258,8 @@ const MapComponent = ({selectedDate,selectedLayer}) => {
          <WMSTileLayer
           url="http://121.121.232.54:7090/geoserver/cite/wms"
           params={filterOption}
+          maxZoom={22}
+          minZoom={1}
           // params={{
           //   layers: 'cite:dp_qc_hr',
           //   format: 'image/png',

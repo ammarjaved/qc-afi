@@ -6,10 +6,22 @@ import {Select, MenuItem} from '@mui/material';
 import Typography from '@mui/material/Typography';
 
 
+
 const FeatureInfo = ({ feature, onClose,onSave }) => {
   const [formData, setFormData] = useState({});
   const [isEditing, setIsEditing] = useState(false);
   const [changes, setChanges] = useState({});  
+  const [selectedImage, setSelectedImage] = useState({ src: '', key: '' });
+  const [showPopup, setShowPopup] = useState(false);
+  
+
+
+  const handleImageClick = (src, key) => {
+    setSelectedImage({ src, key });
+    setShowPopup(true);
+  };
+  
+
   useEffect(() => {
     if (feature?.properties) {
       setFormData(feature.properties);
@@ -72,21 +84,84 @@ const FeatureInfo = ({ feature, onClose,onSave }) => {
         //   />
           
         // </div>
-
+      <div>
         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <img
             src={formData[key]}
             alt={key}
-            style={{ width: 100, height: 50 }} // Adjust size as needed
-            onClick={() => window.open(value, '_blank')}
-          />
+            style={{ width: 100, height: 50, cursor: 'pointer' }}
+            onClick={() => handleImageClick(formData[key], key)}
+            />
           <Typography variant="body1" sx={{ mt: 1 }}>
             {key}
           </Typography>
         </Box>
 
 
+        {showPopup && (
+          <div
+            style={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
+              backgroundColor: 'rgba(0, 0, 0, 0.8)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              zIndex: 1000,
+            }}
+            onClick={() => setShowPopup(false)}
+          >
+            <div
+              style={{
+                position: 'relative',
+                maxWidth: '90%',
+                maxHeight: '90%',
+                backgroundColor: 'white',
+                padding: '20px',
+                borderRadius: '8px',
+              }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={() => setShowPopup(false)}
+                style={{
+                  position: 'absolute',
+                  top: '10px',
+                  right: '10px',
+                  background: 'none',
+                  border: 'none',
+                  fontSize: '20px',
+                  cursor: 'pointer',
+                }}
+              >
+                ×
+              </button>
+              <img
+                src={selectedImage.src}
+                alt={selectedImage.key}
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                  maxWidth: '800px',
+                  maxHeight: '600px',
+                  objectFit: 'contain',
+                }}
+              />
+              <Typography variant="h6" sx={{ mt: 2, textAlign: 'center' }}>
+                {selectedImage.key}
+              </Typography>
+            </div>
+          </div>
+        )}
+        </div>
+
       );
+
+      
+
     }
     else if(key==='qa_status'){
       return   (
@@ -139,7 +214,7 @@ const FeatureInfo = ({ feature, onClose,onSave }) => {
       position: 'absolute',
       top: '90px',
       right: '0px',
-      width: '375px',
+      width: '25%',
       backgroundColor: 'white',
       padding: '0px',
       borderRadius: '4px',
