@@ -50,7 +50,9 @@ const FeatureInfo = ({ feature, onClose,onSave }) => {
        'gid':formData.hasOwnProperty('gid')? formData.gid : undefined,
        'l1_id':formData.hasOwnProperty('l1_id')? formData.l1_id : undefined,
        'l2_id':formData.hasOwnProperty('l2_id')? formData.l2_id : undefined,
-       'l3_id':formData.hasOwnProperty('l3_id')? formData.l3_id : undefined
+       'l3_id':formData.hasOwnProperty('l3_id')? formData.l3_id : undefined,
+       'pk_id':formData.hasOwnProperty('pk_id')? formData.pk_id : undefined
+
       //  'l1_id':formData.hasOwnProperty('l1_id')? formData.l1_id : undefined
 
 

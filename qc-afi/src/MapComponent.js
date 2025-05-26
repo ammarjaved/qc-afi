@@ -118,6 +118,8 @@ const MapComponent = ({selectedDate,selectedLayer}) => {
         changes.table='sfp_l2'
       }else if(selectedLayer=='cite:mfp_l3'){
         changes.table='mfp_l3'
+      }else if(selectedLayer=='cite:high_rise3'){
+        changes.table='dp_high_rise'
       }
       // else if(selectedLayer=='cite:dp_qc_hr'){
       //   changes.table='dp_high_rise'
@@ -128,22 +130,36 @@ const MapComponent = ({selectedDate,selectedLayer}) => {
           delete changes.l1_id;
           delete changes.l2_id;
           delete changes.l3_id;
+          delete changes.pk_id;
           break;
         case 'fpl1':
           delete changes.gid;
           delete changes.l2_id;
           delete changes.l3_id;
+          delete changes.pk_id;
+
           break;
         case 'sfp_l2':
           delete changes.gid;
           delete changes.l1_id;
           delete changes.l3_id;
+          delete changes.pk_id;
+
           break;
         case 'mfp_l3':
           delete changes.gid;
           delete changes.l1_id;
           delete changes.l2_id;
+          delete changes.pk_id;
+
           break;
+        case 'dp_high_rise':
+          delete changes.gid;
+          delete changes.l1_id;
+          delete changes.l2_id;
+          delete changes.l3_id;
+  
+          break;  
         default:
           break;
       }

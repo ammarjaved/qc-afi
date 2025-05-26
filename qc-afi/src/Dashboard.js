@@ -77,6 +77,7 @@ export const Dashboard = () => {
             <MenuItem value="cite:fpl1">FP</MenuItem>
             <MenuItem value="cite:sfp_l2">SFP</MenuItem>
             <MenuItem value="cite:mfp_l3">MFP</MenuItem>
+            <MenuItem value="cite:high_rise3">dp_high_rise</MenuItem>
             {/* <MenuItem value="cite:dp_qc_hr">High-Rise</MenuItem> */}
 
           </Select>
